@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Commands;
+using Application.DTO;
 using Application.Searches;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,14 @@ namespace API.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IGetMoviesCommand getMovies;
-        public MoviesController(IGetMoviesCommand getMovies)
+        private readonly ICreateMovieCommand createMovie;
+
+        public MoviesController(IGetMoviesCommand getMovies, ICreateMovieCommand createMovie)
         {
             this.getMovies = getMovies;
+            this.createMovie = createMovie;
         }
+
 
 
 
@@ -45,8 +50,9 @@ namespace API.Controllers
 
         // POST: api/Movies
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromForm] CreateMovieDTO dto)
         {
+            createMovie.Execute(dto);
         }
 
         // PUT: api/Movies/5

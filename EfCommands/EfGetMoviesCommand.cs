@@ -31,12 +31,12 @@ namespace EfCommands
 
             if(request.GenreId != null)
             {
-                query = query.Where(x => x.Movie_Genre.Any(mg => mg.GenreId == request.GenreId));
+                query = query.Where(x => x.Movie_Genre.Any(mg => mg.Genre.Id == request.GenreId));
             }
 
             if(request.CinemaId != null)
             {
-                query = query.Where(x => x.Movie_Cinema.Any(mc => mc.CinemaId == request.CinemaId));
+                query = query.Where(x => x.Movie_Cinema.Any(mc => mc.Cinema.Id == request.CinemaId));
             }
 
             if(request.StartShowingDate.HasValue)

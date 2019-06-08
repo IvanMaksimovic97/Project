@@ -31,6 +31,7 @@ namespace API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<Context>();
             services.AddTransient<IGetMoviesCommand, EfGetMoviesCommand>();
+            services.AddTransient<ICreateMovieCommand, EfCreateMovieCommand>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
