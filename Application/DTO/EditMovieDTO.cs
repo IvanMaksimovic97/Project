@@ -5,17 +5,18 @@ using System.Text;
 
 namespace Application.DTO
 {
-    public class CreateMovieDTO
+    public class EditMovieDTO
     {
-        [RegularExpression("^[A-Z][a-z]{2,}$", ErrorMessage = "Ime filma nije u dobrom formatu")]
+        public int MovieId { get; set; }
+        //[RegularExpression("^[A-Z][a-z]{2,}$", ErrorMessage = "Ime filma nije u dobrom formatu")]
         public string Title { get; set; }
-        [Required]
+        //[Required]
         public DateTime? StartShowingFrom { get; set; }
-        [Required]
+        //[Required]
         public int DurationMins { get; set; }
-        [Required]
+        //[Required]
         public string Country { get; set; }
-        [Required]
+        //[Required]
         public int Year { get; set; }
         public string PictureUrl { get; set; }
 

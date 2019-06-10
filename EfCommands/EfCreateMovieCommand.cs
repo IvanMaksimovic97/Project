@@ -75,7 +75,6 @@ namespace EfCommands
             if (context.Movies.Any(x => x.Title == request.Title))
                 throw new EntityAlreadyExist("Film vec postoji");
            
-
             return true;
         }
     }

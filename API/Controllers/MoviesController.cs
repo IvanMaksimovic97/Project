@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Commands;
 using Application.DTO;
+using Application.Exceptions;
 using Application.Searches;
+using EntityFramework_DataAccess;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,13 +16,19 @@ namespace API.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        private readonly Context baza;
         private readonly IGetMoviesCommand getMovies;
         private readonly ICreateMovieCommand createMovie;
+        private readonly IDeleteMovieCommand deleteMovie;
+        private readonly IEditMovieCommand editMovie;
 
-        public MoviesController(IGetMoviesCommand getMovies, ICreateMovieCommand createMovie)
+        public MoviesController(Context baza, IGetMoviesCommand getMovies, ICreateMovieCommand createMovie, IDeleteMovieCommand deleteMovie, IEditMovieCommand editMovie)
         {
             this.getMovies = getMovies;
             this.createMovie = createMovie;
+            this.deleteMovie = deleteMovie;
+            this.editMovie = editMovie;
+            this.baza = baza;
         }
 
 
@@ -50,21 +58,64 @@ namespace API.Controllers
 
         // POST: api/Movies
         [HttpPost]
-        public void Post([FromForm] CreateMovieDTO dto)
+        public IActionResult Post([FromForm] CreateMovieDTO dto)
         {
-            createMovie.Execute(dto);
+            try
+            {
+                createMovie.Execute(dto);
+                return StatusCode(201);
+
+            }catch(EntityNotFoundException e)
+            {
+                return UnprocessableEntity(e.Message);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
 
         // PUT: api/Movies/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromForm] EditMovieDTO dto)
         {
+            try
+            {
+                var movie = baza.Movies.Find(id);
+                if (movie == null)
+                    return NotFound();
+
+                editMovie.Execute(dto);
+                return NoContent();
+
+            }
+            catch (EntityNotFoundException e)
+            {
+                return UnprocessableEntity(e.Message);
+            }
+            catch(Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                deleteMovie.Execute(id);
+                return NoContent();
+            }
+            catch (EntityNotFoundException e)
+            {
+                return UnprocessableEntity(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }

@@ -32,6 +32,8 @@ namespace API
             services.AddDbContext<Context>();
             services.AddTransient<IGetMoviesCommand, EfGetMoviesCommand>();
             services.AddTransient<ICreateMovieCommand, EfCreateMovieCommand>();
+            services.AddTransient<IDeleteMovieCommand, EfDeleteMovieCommand>();
+            services.AddTransient<IEditMovieCommand, EfEditMovieCommand>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
