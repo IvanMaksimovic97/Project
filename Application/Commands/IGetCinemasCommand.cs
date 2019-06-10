@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Application.Commands
 {
-    public interface ICreateActorCommand : ICommand<CreateActorDTO>
+    public interface IGetCinemasCommand : ICommand<CinemaDTO, IEnumerable<CinemaDTO>>
     {
     }
 }

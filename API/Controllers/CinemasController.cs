@@ -12,27 +12,28 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class CinemasController : ControllerBase
     {
-        private readonly ICreateActorCommand createActor;
-        private readonly IDeleteActorCommand deleteActor;
-        private readonly IGetActorsCommand getActors;
+        private readonly ICreateCinemaCommand createCinema;
+        private readonly IGetCinemasCommand getCinemas;
+        private readonly IDeleteCinemaCommand deleteCinema;
 
-        public ActorsController(ICreateActorCommand createActor, IDeleteActorCommand deleteActor, IGetActorsCommand getActors)
+        public CinemasController(ICreateCinemaCommand createCinema, IGetCinemasCommand getCinemas, IDeleteCinemaCommand deleteCinema)
         {
-            this.createActor = createActor;
-            this.deleteActor = deleteActor;
-            this.getActors = getActors;
+            this.createCinema = createCinema;
+            this.getCinemas = getCinemas;
+            this.deleteCinema = deleteCinema;
         }
 
-        // GET: api/Actors
+
+        // GET: api/Cinemas
         [HttpGet]
-        public IActionResult Get([FromQuery] ActorDTO request)
+        public IActionResult Get([FromQuery] CinemaDTO request)
         {
             try
             {
-                var actors = getActors.Execute(request);
-                return Ok(actors);
+                var cinemas = getCinemas.Execute(request);
+                return Ok(cinemas);
             }
             catch(Exception e)
             {
@@ -40,33 +41,32 @@ namespace API.Controllers
             }
         }
 
-        // GET: api/Actors/5
-        /*[HttpGet("{id}", Name = "Get")]
+        // GET: api/Cinemas/5
+        [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
-        }*/
+        }
 
-        // POST: api/Actors
+        // POST: api/Cinemas
         [HttpPost]
-        public IActionResult Post([FromForm] CreateActorDTO value)
+        public IActionResult Post([FromForm] CreateCinemaDTO value)
         {
             try
             {
-                createActor.Execute(value);
+                createCinema.Execute(value);
                 return StatusCode(201);
-            }
-            catch(EntityAlreadyExist e)
+            }catch(EntityAlreadyExist e)
             {
                 return StatusCode(409, e.Message);
-            }
-            catch(Exception e)
+
+            }catch(Exception e)
             {
                 return StatusCode(500, "Greska");
             }
         }
 
-        // PUT: api/Actors/5
+        // PUT: api/Cinemas/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -78,7 +78,7 @@ namespace API.Controllers
         {
             try
             {
-                deleteActor.Execute(id);
+                deleteCinema.Execute(id);
                 return NoContent();
             }
             catch (EntityNotFoundException e)

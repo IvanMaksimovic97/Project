@@ -16,6 +16,5 @@ namespace Domain
         public ICollection<Movie_Genre> Movie_Genre { get; set; }
         public ICollection<Movie_Actor> Movie_Actor { get; set; }
         public ICollection<Movie_Cinema> Movie_Cinema { get; set; }
-
     }
 }

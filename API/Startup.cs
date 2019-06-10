@@ -37,6 +37,10 @@ namespace API
 
             services.AddTransient<ICreateActorCommand, EfCreateActorCommand>();
             services.AddTransient<IDeleteActorCommand, EfDeleteActorCommand>();
+            services.AddTransient<IGetActorsCommand, EfGetActorsCommand>();
+
+            services.AddTransient<ICreateCinemaCommand, EfCreateCinemaCommand>();
+            services.AddTransient<IGetCinemasCommand, EfGetCinemasCommand>();
 
             services.AddSwaggerGen(c =>
             {

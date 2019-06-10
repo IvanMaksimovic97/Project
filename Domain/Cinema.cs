@@ -11,6 +11,5 @@ namespace Domain
         public string Phone { get; set; }
 
         public ICollection<Movie_Cinema> Movie_Cinema { get; set; }
-
     }
 }

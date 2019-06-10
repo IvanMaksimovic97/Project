@@ -16,7 +16,7 @@ namespace EfCommands
         {
         }
 
-        public void Execute(ActorDTO request)
+        public void Execute(CreateActorDTO request)
         {
             if (context.Actors.Any(an => an.FirstName == request.FirstName) && context.Actors.Any(al => al.LastName == request.LastName))
                 throw new EntityAlreadyExist("Glumac vec postoji");
