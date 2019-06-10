@@ -50,11 +50,11 @@ namespace API.Controllers
         }
 
         // GET: api/Movies/5
-        [HttpGet("{id}", Name = "Get")]
+        /*[HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
-        }
+        }*/
 
         // POST: api/Movies
         [HttpPost]

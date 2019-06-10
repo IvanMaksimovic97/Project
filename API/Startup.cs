@@ -34,6 +34,10 @@ namespace API
             services.AddTransient<ICreateMovieCommand, EfCreateMovieCommand>();
             services.AddTransient<IDeleteMovieCommand, EfDeleteMovieCommand>();
             services.AddTransient<IEditMovieCommand, EfEditMovieCommand>();
+
+            services.AddTransient<ICreateActorCommand, EfCreateActorCommand>();
+            services.AddTransient<IDeleteActorCommand, EfDeleteActorCommand>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });

@@ -34,6 +34,8 @@ namespace EfCommands
                 if(request.PictureUrl != null)
                     movie.PictureUrl = request.PictureUrl;
 
+                movie.ModifiedAt = DateTime.Now;
+
                 context.SaveChanges();
             }
         }
