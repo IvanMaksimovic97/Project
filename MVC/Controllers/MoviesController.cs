@@ -103,6 +103,12 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, EditMovieDTO request)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["greska"] = "Greska pri unosu";
+                RedirectToAction("create");
+            }
+
             try
             {
                 editMovie.Execute(request);

@@ -47,6 +47,7 @@ namespace MVC
             services.AddTransient<ICreateActorCommand, EfCreateActorCommand>();
             services.AddTransient<IDeleteActorCommand, EfDeleteActorCommand>();
             services.AddTransient<IGetActorsCommand, EfGetActorsCommand>();
+            services.AddTransient<IGetOneActorCommand, EfGetOneActorCommand>();
 
             services.AddTransient<ICreateCinemaCommand, EfCreateCinemaCommand>();
             services.AddTransient<IGetCinemasCommand, EfGetCinemasCommand>();
