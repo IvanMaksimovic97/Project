@@ -18,16 +18,19 @@ namespace EfCommands
         {
             var actors = context.Actors.AsQueryable();
 
-            if(request.FirstName != null)
+            if (request != null)
             {
-                var fname = request.FirstName.ToLower();
-                actors = actors.Where(af => af.FirstName.Contains(fname));
-            }
+                if (request.FirstName != null)
+                {
+                    var fname = request.FirstName.ToLower();
+                    actors = actors.Where(af => af.FirstName.Contains(fname));
+                }
 
-            if(request.LastName != null)
-            {
-                var lname = request.LastName.ToLower();
-                actors = actors.Where(al => al.LastName.Contains(lname));
+                if (request.LastName != null)
+                {
+                    var lname = request.LastName.ToLower();
+                    actors = actors.Where(al => al.LastName.Contains(lname));
+                }
             }
 
             return actors.Select(a => new ActorDTO

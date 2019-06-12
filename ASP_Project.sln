@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework_DataAccess"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{65CF64AB-CA35-4B81-B1EE-AB3220770320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{F3FEAA1E-337F-4B0C-8D11-D185E5C8EF70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{F3FEAA1E-337F-4B0C-8D11-D185E5C8EF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{D2A0A366-395F-41EE-8E08-2181AC036EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{D2A0A366-395F-41EE-8E08-2181AC036EF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{FAE1AD04-BBDC-4BA8-A1B2-151BD0F01FC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{FAE1AD04-BBDC-4BA8-A1B2-151BD0F01FC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCommands", "EfCommands\EfCommands.csproj", "{03B8E204-0C74-47BE-B61D-604F6072C94A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCommands", "EfCommands\EfCommands.csproj", "{03B8E204-0C74-47BE-B61D-604F6072C94A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{26F25AC3-21A2-469A-B7A5-21CD595743E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{03B8E204-0C74-47BE-B61D-604F6072C94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B8E204-0C74-47BE-B61D-604F6072C94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03B8E204-0C74-47BE-B61D-604F6072C94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F25AC3-21A2-469A-B7A5-21CD595743E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F25AC3-21A2-469A-B7A5-21CD595743E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F25AC3-21A2-469A-B7A5-21CD595743E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F25AC3-21A2-469A-B7A5-21CD595743E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,7 @@ namespace Application.Interfaces
         void Execute(TRequest request);
     }
 
-    public interface ICommand<TRequest, TResult> where TRequest : class
+    public interface ICommand<TRequest, TResult>
     {
         TResult Execute(TRequest request);
     }

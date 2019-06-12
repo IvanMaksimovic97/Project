@@ -38,7 +38,8 @@ namespace EfCommands
                     {
                         CreatedAt = DateTime.Now,
                         Movie = movie,
-                        Actor = context.Actors.Find(actorId)
+                        Actor = context.Actors.Find(actorId),
+                        IsDeleted = false
                     });
                 }
 
@@ -48,7 +49,8 @@ namespace EfCommands
                     {
                         CreatedAt = DateTime.Now,
                         Movie = movie,
-                        Genre = context.Genres.Find(genreId)
+                        Genre = context.Genres.Find(genreId),
+                        IsDeleted = false
                     });
                 }
 

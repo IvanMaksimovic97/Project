@@ -1,0 +1,74 @@
+﻿@model Application.DTO.CreateMovieDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CreateMovieDTO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartShowingFrom" class="control-label"></label>
+                <input asp-for="StartShowingFrom" class="form-control" />
+                <span asp-validation-for="StartShowingFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationMins" class="control-label"></label>
+                <input asp-for="DurationMins" class="form-control" />
+                <span asp-validation-for="DurationMins" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PictureUrl" class="control-label"></label>
+                <input asp-for="PictureUrl" class="form-control" />
+                <span asp-validation-for="PictureUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select name="ActorsIds[]" class="form-control" multiple>
+                    @foreach (var item in ViewBag.Glumci)
+                    {
+                        <option value="@item.Id">@($"{item.FirstName} {item.LastName}")</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="GenresIds[]" class="form-control" multiple>
+                    @foreach (var item in ViewBag.Zanrovi)
+                    {
+                        <option value="@item.Id">@($"{item.Name}")</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

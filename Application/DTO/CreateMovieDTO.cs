@@ -7,13 +7,19 @@ namespace Application.DTO
 {
     public class CreateMovieDTO
     {
+        public CreateMovieDTO()
+        {
+            ActorsIds = new List<int>();
+            GenresIds = new List<int>();
+        }
+
         [RegularExpression("^[A-Z][a-z]{2,}$", ErrorMessage = "Ime filma nije u dobrom formatu")]
         public string Title { get; set; }
-        [Required]
+        //[Required]
         public DateTime? StartShowingFrom { get; set; }
         [Required]
         public int DurationMins { get; set; }
-        [Required]
+        //[Required]
         public string Country { get; set; }
         [Required]
         public int Year { get; set; }
