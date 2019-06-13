@@ -20,7 +20,7 @@ namespace EfCommands
             if (cinema == null)
                 throw new EntityNotFoundException("Bioskop nije pronadjen");
 
-            context.Cinemas.Remove(cinema);
+            cinema.IsDeleted = true;
             context.SaveChanges();
         }
     }

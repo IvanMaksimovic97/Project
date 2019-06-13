@@ -19,7 +19,7 @@ namespace EfCommands
             if (actor == null)
                 throw new EntityNotFoundException("Glumac nije pronadjen");
 
-            context.Actors.Remove(actor);
+            actor.IsDeleted = true;
             context.SaveChanges();
         }
     }
