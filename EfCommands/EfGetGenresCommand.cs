@@ -27,6 +27,8 @@ namespace EfCommands
                 }
             }
 
+            genres = genres.Where(g => g.IsDeleted == false);
+
             return genres.Select(gn => new GenreDTO
             {
                 Id = gn.Id,

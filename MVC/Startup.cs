@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Commands;
+using Application.Email;
+using Application.Interfaces;
 using EfCommands;
 using EntityFramework_DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -53,6 +55,12 @@ namespace MVC
             services.AddTransient<IGetCinemasCommand, EfGetCinemasCommand>();
 
             services.AddTransient<IGetGenresCommand, EfGetGenresCommand>();
+
+            var section = Configuration.GetSection("Email");
+
+            var sender = new SmtpEmailSender("smtp.gmail.com", 587, "t.sojic716@gmail.com", "sreckice");
+
+            services.AddSingleton<IEmailSender>(sender);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

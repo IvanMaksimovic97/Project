@@ -10,5 +10,8 @@ namespace Application.Searches
         public string Title { get; set; }
         public int? GenreId { get; set; }
         public int? CinemaId { get; set; }
+
+        public int PerPage { get; set; } = 2;
+        public int PageNumber { get; set; } = 1;
     }
 }

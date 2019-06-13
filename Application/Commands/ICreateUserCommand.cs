@@ -1,14 +1,12 @@
 ﻿using Application.DTO;
 using Application.Interfaces;
-using Application.Responses;
-using Application.Searches;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Application.Commands
 {
-    public interface IGetMoviesCommand : ICommand<MovieSearch, PagedResponse<MovieDTO>>
+    public interface ICreateUserCommand : ICommand<CreateUserDTO>
     {
     }
 }

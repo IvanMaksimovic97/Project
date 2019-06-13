@@ -19,7 +19,8 @@ namespace EfCommands
             if (movie == null)
                 throw new EntityNotFoundException("Film nije pronadjen");
 
-            context.Movies.Remove(movie);
+            movie.IsDeleted = true;
+            movie.ModifiedAt = DateTime.Now;
             context.SaveChanges();
         }
     }

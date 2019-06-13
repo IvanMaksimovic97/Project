@@ -5,6 +5,7 @@ using System.Text;
 using Application.Commands;
 using Application.DTO;
 using Application.Exceptions;
+using Application.Interfaces;
 using Domain;
 using EntityFramework_DataAccess;
 
@@ -12,8 +13,11 @@ namespace EfCommands
 {
     public class EfCreateMovieCommand : EfBaseCommand, ICreateMovieCommand
     {
-        public EfCreateMovieCommand(Context context) : base(context)
+        private readonly IEmailSender emailSender;
+
+        public EfCreateMovieCommand(Context context, IEmailSender emailSender) : base(context)
         {
+            this.emailSender = emailSender;
         }
 
         public void Execute(CreateMovieDTO request)
@@ -55,6 +59,11 @@ namespace EfCommands
                 }
 
                 context.SaveChanges();
+
+                emailSender.Subject = "Uspesno ste kreirali film";
+                emailSender.Body = "Uspesno ste kreirali film";
+                emailSender.ToEmail = "imaksimovic97@gmail.com";
+                emailSender.Send();
             }
         }
 

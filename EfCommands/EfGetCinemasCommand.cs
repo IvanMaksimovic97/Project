@@ -36,6 +36,8 @@ namespace EfCommands
                 cinema = cinema.Where(c => c.Name.Contains(phone));
             }
 
+            cinema = cinema.Where(c => c.IsDeleted == false);
+
             return cinema.Select(c => new CinemaDTO
             {
                 Id = c.Id,

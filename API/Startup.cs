@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Application.Commands;
+using Application.Email;
+using Application.Interfaces;
 using EfCommands;
 using EntityFramework_DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -42,9 +46,23 @@ namespace API
             services.AddTransient<ICreateCinemaCommand, EfCreateCinemaCommand>();
             services.AddTransient<IGetCinemasCommand, EfGetCinemasCommand>();
 
+            services.AddTransient<ICreateUserCommand, EfCreateUserCommand>();
+            services.AddTransient<IGetUsersCommand, EfGetUsersCommand>();
+            services.AddTransient<IEditUserCommand, EfEditUserCommand>();
+            services.AddTransient<IDeleteUserCommand, EfDeleteUserCommand>();
+
+            var section = Configuration.GetSection("Email");
+
+            var sender = new SmtpEmailSender("smtp.gmail.com", 587, "t.sojic716@gmail.com", "sreckice");
+
+            services.AddSingleton<IEmailSender>(sender);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //c.IncludeXmlComments(xmlPath);
             });
         }
 

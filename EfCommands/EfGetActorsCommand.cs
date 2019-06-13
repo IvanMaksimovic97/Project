@@ -33,6 +33,8 @@ namespace EfCommands
                 }
             }
 
+            actors = actors.Where(aa => aa.IsDeleted == false);
+
             return actors.Select(a => new ActorDTO
             {
                 Id = a.Id,
