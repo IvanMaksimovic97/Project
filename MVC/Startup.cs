@@ -58,7 +58,7 @@ namespace MVC
 
             var section = Configuration.GetSection("Email");
 
-            var sender = new SmtpEmailSender("smtp.gmail.com", 587, "t.sojic716@gmail.com", "sreckice");
+            var sender = new SmtpEmailSender("smtp.gmail.com", 587, "nekiemail@gmail.com", "password");
 
             services.AddSingleton<IEmailSender>(sender);
         }
